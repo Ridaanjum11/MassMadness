@@ -1,0 +1,20 @@
+{
+  "version": 4,
+  "configurations": [
+    {
+      "name": "Win32",
+      "compilerPath": "D:\\mingw64\\bin\\g++.exe",
+      "intelliSenseMode": "windows-gcc-x64",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+
+      "includePath": [
+        "${workspaceFolder}/**",
+        "D:\\mpi\\Include",
+        "D:\\mingw64\\include",
+        "D:\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\15.2.0\\include",
+        "D:\\SFML-3.0.2\\include"
+      ]
+    }
+  ]
+}
