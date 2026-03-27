@@ -1,0 +1,33 @@
+{
+ "version": "2.0.0",
+ "tasks": [
+  {
+   "type": "cppbuild",
+   "label": "build",
+   "command": "D:/mingw64/bin/g++.exe",
+   "args": [
+    "-g",
+    "${workspaceFolder}/*.cpp",
+
+    "-ID:/SFML-3.0.2/include",
+
+    "-LD:/SFML-3.0.2/lib",
+
+    "-lsfml-graphics",
+    "-lsfml-window",
+    "-lsfml-system",
+
+    "-o",
+    "${workspaceFolder}/app.exe"
+   ],
+   "options": {
+    "cwd": "${workspaceFolder}"
+   },
+   "problemMatcher": ["$gcc"],
+   "group": {
+    "kind": "build",
+    "isDefault": true
+   }
+  }
+ ]
+}
