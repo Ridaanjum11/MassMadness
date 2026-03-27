@@ -34,7 +34,7 @@ if not exist "%SFML%\include\SFML\Graphics.hpp" (
 
 echo Compiling with g++...
 if exist "%OUT%" del /Q "%OUT%"
-"%GPP%" -fopenmp -std=c++17 -O2 src\main.cpp src\Agent.cpp src\Simulation.cpp src\Graphics.cpp -I include -I "%SFML%\include" -L "%SFML%\lib" -lsfml-graphics -lsfml-window -lsfml-system -o "%OUT%"
+"%GPP%" -fopenmp -std=c++17 -O2 -static-libgcc -static-libstdc++ src\main.cpp src\Agent.cpp src\Simulation.cpp src\Graphics.cpp -I include -I "%SFML%\include" -L "%SFML%\lib" -lsfml-graphics -lsfml-window -lsfml-system -o "%OUT%"
 
 if %ERRORLEVEL% EQU 0 (
     echo.
