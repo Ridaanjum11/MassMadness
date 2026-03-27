@@ -3,7 +3,7 @@ setlocal
 
 REM Change SFML path if installed elsewhere
 set GPP=C:\msys64\mingw64\bin\g++.exe
-set SFML=C:\msys64\mingw64
+set SFML=C:\SFML-3.0.2-Windows.MinGW.x64\SFML-3.0.2
 set OUT=MassMadness.exe
 
 echo =============================================
@@ -17,23 +17,23 @@ if not exist "%SFML%\include\SFML\Graphics.hpp" (
     echo.
     echo Please install SFML 3.0.2:
     echo   1. Download from: https://github.com/SFML/SFML/releases/tag/3.0.2
-    echo   2. Extract to: C:\SFML-3.0.2
+    echo   2. Extract to: C:\SFML-3.0.2-Windows.MinGW.x64
     echo   3. Read SFML_SETUP.md for detailed instructions
     echo.
     exit /b 1
 )
 
-echo Compiling with MSYS2 g++...
-C:\msys64\usr\bin\bash.exe -lc "cd /c/Users/Rida\ Anjum/Downloads/madness/MassMadness && /mingw64/bin/g++ -fopenmp -std=c++17 -O2 src/main.cpp src/Agent.cpp src/Simulation.cpp src/Graphics.cpp -I include -I /mingw64/include -L /mingw64/lib -lsfml-graphics -lsfml-window -lsfml-system -o MassMadness.exe"
+echo Compiling with g++...
+%GPP% -fopenmp -std=c++17 -O2 src\main.cpp src\Agent.cpp src\Simulation.cpp src\Graphics.cpp -I include -I "%SFML%\include" -L "%SFML%\lib" -lsfml-graphics -lsfml-window -lsfml-system -o %OUT%
 
 if %ERRORLEVEL% EQU 0 (
     echo.
     echo Build SUCCESSFUL!  -->  %OUT%
 
     echo Copying SFML DLLs...
-    copy /Y "%SFML%\bin\libsfml-graphics-3.dll" . >nul 2>&1
-    copy /Y "%SFML%\bin\libsfml-window-3.dll"   . >nul 2>&1
-    copy /Y "%SFML%\bin\libsfml-system-3.dll"   . >nul 2>&1
+    copy /Y "%SFML%\bin\sfml-graphics-3.dll" . >nul 2>&1
+    copy /Y "%SFML%\bin\sfml-window-3.dll"   . >nul 2>&1
+    copy /Y "%SFML%\bin\sfml-system-3.dll"   . >nul 2>&1
 
     echo.
     echo Launching game...
